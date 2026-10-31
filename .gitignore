@@ -73,3 +73,6 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Third-party assets - Epic Games Paragon
+/Content/ParagonKwang/

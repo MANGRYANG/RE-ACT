@@ -30,7 +30,21 @@ protected:
     TObjectPtr<UInputAction> JumpAction;
 
 private:
+	void HandleMoveStarted(const FInputActionValue& Value);
     void HandleMove(const FInputActionValue& Value);
+    void HandleMoveReleased();
     void HandleJumpStarted();
     void HandleJumpStopped();
+
+    // 동일 방향으로의 연속 입력 허용 시간
+    static constexpr double DoubleTapWindow = 0.25;
+
+    // 현재 누르고 있는 이동 방향
+    int32 HeldMoveDirection = 0;
+
+    // 마지막으로 누른 이동 방향
+    int32 LastTapDirection = 0;
+
+    // 마지막 방향키 입력 시각
+    double LastTapTime = -1.0;
 };

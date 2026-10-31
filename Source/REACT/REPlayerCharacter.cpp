@@ -19,7 +19,7 @@ AREPlayerCharacter::AREPlayerCharacter()
     UCharacterMovementComponent* Movement = GetCharacterMovement();
 
     Movement->MaxWalkSpeed = 450.0f;
-    Movement->JumpZVelocity = 600.0f;
+    Movement->JumpZVelocity = 900.0f;
     Movement->GravityScale = 1.75f;
     Movement->AirControl = 0.35f;
 
@@ -86,4 +86,11 @@ void AREPlayerCharacter::MoveHorizontal(float InputValue)
 
 	// 캐릭터의 이동 입력 처리
     AddMovementInput(FVector::ForwardVector, MoveValue);
+}
+
+void AREPlayerCharacter::SetRunning(bool bShouldRun)
+{
+    bIsRunning = bShouldRun;
+
+    GetCharacterMovement()->MaxWalkSpeed = bIsRunning ? 1050.0f : 450.0f;
 }
